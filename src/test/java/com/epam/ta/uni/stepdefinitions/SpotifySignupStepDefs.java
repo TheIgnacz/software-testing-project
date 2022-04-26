@@ -2,13 +2,14 @@ package com.epam.ta.uni.stepdefinitions;
 
 import com.epam.ta.uni.config.TestConfig;
 import com.epam.ta.uni.pageobjects.HomePage;
-import com.epam.ta.uni.pageobjects.SignUpPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.awaitility.Awaitility;
 import org.hamcrest.Matchers;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
@@ -26,32 +27,29 @@ public class SpotifySignupStepDefs {
     @Autowired
     private HomePage homePage;
 
-//    @Autowired
-//    private SignUpPage signUpPage;
-
     @Given("the home page is opened")
     public void theHomePageIsOpened() {
         homePage.navigateToHomePage();
     }
-
-//    @And("the Cookie disclaimer is closed")
-//    public void theCookieDisclaimerIsClosed() {
-//        homePage.clickOnCookieDisclaimer();
-//    }
 
     @And("the Join header button is clicked")
     public void theJoinHeaderButtonIsClicked() {
         homePage.clickOnJoinButton();
     }
 
-//    @Given("it is scrolled down")
-//    public void itIsScrolledDown() {
-//        signUpPage.scrollToTheBottomOfThePage();
-//    }
+    @And("the Log in header button is clicked")
+    public void theLogInHeaderButtonIsClicked() {
+        homePage.clickOnLogInButton();
+    }
 
     @When("the Join with email button is clicked")
     public void theJoinWithEmailButtonIsClicked() {
         homePage.clickOnJoinWithEmailButton();
+    }
+
+    @When("the Log in with email button is clicked")
+    public void theLogInWithEmailButtonIsClicked() {
+        homePage.clickOnLogInWithEmailButton();
     }
 
     @And("^the '(.*)' error message of the '(?:.*)' (?:field|dropdown|radio buttons|checkbox) should be shown$")
@@ -67,6 +65,7 @@ public class SpotifySignupStepDefs {
     @When("the {string} is filled in with {string}")
     public void theFieldIsFilledWithParameter(final String field, final String content) {
         homePage.getInputFieldByName(field).sendKeys(content);
+        homePage.waitForPageReadiness();
     }
 
     @When("the Tab button is pressed")
@@ -74,4 +73,17 @@ public class SpotifySignupStepDefs {
         new Actions(homePage.getWebDriverFromFactory()).sendKeys(Keys.TAB).build().perform();
         homePage.waitForPageReadiness();
     }
+
+    @Then("home page should be displayed")
+    public void verifySuccessful(){
+        Awaitility.await(String.format("Element was not loaded in %s seconds", PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS)).atMost(Duration.ofSeconds(PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS))
+                .until(() -> homePage.getWebDriverFromFactory().findElements(
+                                By.xpath(String.format("//*[@id=\"wrap\"]/div[2]/main/div/div/div[1]/div[1]/div/div[2]/div/div/div/div[1]/div/div/div/div[1]/div/div[1]/section/div/div[1]/div/div/div[1]/div/div/h3", "Teszt Elek"))
+                        ).size(),
+                        Matchers.is(1));
+//        String expectedText="Teszt Elek";
+//        String actualText=homePage.getWebDriverFromFactory().findElement(By.xpath("//*[@id=\"wrap\"]/div[2]/main/div/div/div[1]/div[1]/div/div[2]/div/div/div/div[1]/div/div/div/div[1]/div/div[1]/section/div/div[1]/div/div/div[1]/div/div/h3")).getText();
+//        Assert.assertTrue("Login is successful",expectedText.equals(actualText));
+    }
+
 }
