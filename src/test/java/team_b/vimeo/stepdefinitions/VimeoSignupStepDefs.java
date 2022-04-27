@@ -21,7 +21,7 @@ import static team_b.vimeo.config.TestConfig.PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS;
 
 @CucumberContextConfiguration
 @ContextConfiguration(classes = TestConfig.class)
-public class SpotifySignupStepDefs {
+public class VimeoSignupStepDefs {
 
     @Autowired
     private HomePage homePage;
@@ -80,9 +80,6 @@ public class SpotifySignupStepDefs {
                                 By.xpath(String.format("//*[@id=\"wrap\"]/div[2]/main/div/div/div[1]/div[1]/div/div[2]/div/div/div/div[1]/div/div/div/div[1]/div/div[1]/section/div/div[1]/div/div/div[1]/div/div/h3", "Teszt Elek"))
                         ).size(),
                         Matchers.is(1));
-//        String expectedText="Teszt Elek";
-//        String actualText=homePage.getWebDriverFromFactory().findElement(By.xpath("//*[@id=\"wrap\"]/div[2]/main/div/div/div[1]/div[1]/div/div[2]/div/div/div/div[1]/div/div/div/div[1]/div/div[1]/section/div/div[1]/div/div/div[1]/div/div/h3")).getText();
-//        Assert.assertTrue("Login is successful",expectedText.equals(actualText));
     }
 
 }
