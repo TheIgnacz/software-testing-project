@@ -1,7 +1,7 @@
-package com.epam.ta.uni.stepdefinitions;
+package team_b.vimeo.stepdefinitions;
 
-import com.epam.ta.uni.config.TestConfig;
-import com.epam.ta.uni.pageobjects.HomePage;
+import team_b.vimeo.config.TestConfig;
+import team_b.vimeo.pageobjects.HomePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,7 +9,6 @@ import io.cucumber.java.en.When;
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.awaitility.Awaitility;
 import org.hamcrest.Matchers;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
@@ -18,11 +17,11 @@ import org.springframework.test.context.ContextConfiguration;
 
 import java.time.Duration;
 
-import static com.epam.ta.uni.config.TestConfig.PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS;
+import static team_b.vimeo.config.TestConfig.PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS;
 
 @CucumberContextConfiguration
 @ContextConfiguration(classes = TestConfig.class)
-public class SpotifySignupStepDefs {
+public class VimeoSignupStepDefs {
 
     @Autowired
     private HomePage homePage;
@@ -81,9 +80,6 @@ public class SpotifySignupStepDefs {
                                 By.xpath(String.format("//*[@id=\"wrap\"]/div[2]/main/div/div/div[1]/div[1]/div/div[2]/div/div/div/div[1]/div/div/div/div[1]/div/div[1]/section/div/div[1]/div/div/div[1]/div/div/h3", "Teszt Elek"))
                         ).size(),
                         Matchers.is(1));
-//        String expectedText="Teszt Elek";
-//        String actualText=homePage.getWebDriverFromFactory().findElement(By.xpath("//*[@id=\"wrap\"]/div[2]/main/div/div/div[1]/div[1]/div/div[2]/div/div/div/div[1]/div/div/div/div[1]/div/div[1]/section/div/div[1]/div/div/div[1]/div/div/h3")).getText();
-//        Assert.assertTrue("Login is successful",expectedText.equals(actualText));
     }
 
 }

@@ -1,9 +1,9 @@
-package com.epam.ta.uni.hooks;
+package team_b.vimeo.hooks;
 
+import team_b.vimeo.factory.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.epam.ta.uni.factory.WebDriverFactory;
 import io.cucumber.java.After;
 
 public class Hooks {
@@ -14,7 +14,6 @@ public class Hooks {
     @After
     public void afterScenario() {
         final WebDriver webDriver = webDriverFactory.getWebDriver();
-        // for safari => webDriver.manage().getCookies().forEach(cookie -> webDriver.manage().deleteCookie(cookie));
         webDriver.manage().deleteAllCookies();
     }
 }
