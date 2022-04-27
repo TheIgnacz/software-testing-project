@@ -1,4 +1,4 @@
-package com.epam.ta.uni.factory;
+package team_b.vimeo.factory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 import java.time.Duration;
 import java.util.Objects;
 
-import static com.epam.ta.uni.config.TestConfig.PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS;
+import static team_b.vimeo.config.TestConfig.PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS;
 
 @Component
 public class WebDriverFactory {
