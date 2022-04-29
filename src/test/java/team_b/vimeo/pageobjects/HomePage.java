@@ -23,6 +23,15 @@ public class HomePage extends CommonPageObject {
     @FindBy(css = "#modal-root > div.sc-76ujyu-0.kELeVB > div.at68q6-0.kdHbbu > form.at68q6-4.gOpkQK > button > div")
     private WebElement logInWithEmailButton;
 
+    @FindBy(xpath = "//*[@id=\"__next\"]/div[1]/header/div/div/div[2]/div/div[1]/div[4]/a")
+    private WebElement watchButton;
+
+    @FindBy(xpath = "//*[@id=\"__next\"]/div[1]/header/div/div/div[2]/div/div[1]/div[5]/a")
+    private WebElement pricingButton;
+
+    @FindBy(css = "#modal-root > div.sc-76ujyu-0.kELeVB > div.at68q6-0.kdHbbu > form.at68q6-4.gOpkQK > div > a")
+    private WebElement forgotYourPasswordLink;
+
     @FindBy(id = "name")
     private WebElement nameInput;
 
@@ -72,6 +81,24 @@ public class HomePage extends CommonPageObject {
     public void clickOnLogInWithEmailButton() {
         waitForElementToBeClickable(logInWithEmailButton);
         logInWithEmailButton.click();
+        waitForPageReadiness();
+    }
+
+    public void clickWatchButton() {
+        waitForElementToBeClickable(watchButton);
+        watchButton.click();
+        waitForPageReadiness();
+    }
+
+    public void clickPricingButton() {
+        waitForElementToBeClickable(pricingButton);
+        pricingButton.click();
+        waitForPageReadiness();
+    }
+
+    public void clickForgotYourPasswordLink() {
+        waitForElementToBeClickable(forgotYourPasswordLink);
+        forgotYourPasswordLink.click();
         waitForPageReadiness();
     }
 

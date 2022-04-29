@@ -9,3 +9,7 @@ Feature: Vimeo login page
       And the 'Enter your password.' is filled in with 'KalaPal_11'
       And the Log in with email button is clicked
     Then home page should be displayed
+
+  Scenario: Check Forgot your password link
+    When the Forgot your password link is clicked
+    Then the 'https://vimeo.com/forgot_password' page is opened

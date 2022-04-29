@@ -1,5 +1,6 @@
 package team_b.vimeo.stepdefinitions;
 
+import org.junit.Assert;
 import team_b.vimeo.config.TestConfig;
 import team_b.vimeo.pageobjects.HomePage;
 import io.cucumber.java.en.And;
@@ -15,7 +16,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
+import java.io.Console;
 import java.time.Duration;
+import java.util.logging.Logger;
 
 import static team_b.vimeo.config.TestConfig.PAGE_OR_ELEMENT_LOAD_WAIT_SECONDS;
 
@@ -81,5 +84,20 @@ public class VimeoSignupStepDefs {
                         ).size(),
                         Matchers.is(1));
     }
+
+    @Then("the {string} page is opened")
+    public void checkURL(final String currentUrl){
+        String url = homePage.getWebDriverFromFactory().getCurrentUrl();
+        Assert.assertEquals(currentUrl, url);
+    }
+
+    @When("the Watch button is clicked")
+    public void theWatchClicked() {homePage.clickWatchButton();}
+
+    @When("the Pricing button is clicked")
+    public void thePricingClicked() {homePage.clickPricingButton();}
+
+    @When("the Forgot your password link is clicked")
+    public void theForgotYourPasswordClicked() {homePage.clickForgotYourPasswordLink();}
 
 }
