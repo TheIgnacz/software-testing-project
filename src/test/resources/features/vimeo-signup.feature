@@ -38,3 +38,5 @@ Feature: Vimeo sign up page
     Then the 'Hey, we recognize this email! ' error message of the 'Enter your email.' field should be shown
 
 
+
+
