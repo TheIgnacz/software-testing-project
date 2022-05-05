@@ -1,31 +1,27 @@
-name: 'BrowserStack Env Setup'
+name: 'BrowserStack Test'
 on: [workflow_dispatch]
 jobs:
   ubuntu-job:
     name: 'BrowserStack Test on Ubuntu'
-      runs-on: ubuntu-latest
-      steps:
+    runs-on: ubuntu-latest
+    steps:
 
-        - name: 'BrowserStack Env Setup'
-          uses: browserstack/github-actions/setup-env@master
-          with:
-            username: ${{ secrets.BROWSERSTACK_USERNAME }}
-            access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      - name: 'BrowserStack Env Setup'
+        uses: browserstack/github-actions/setup-env@master
+        with:
+          username:  ${{ secrets.BROWSERSTACK_USERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
-        - name: 'BrowserStack Local Tunnel Setup'
-            uses: browserstack/github-actions/setup-local@master
-            with:
-              local-testing: start
-              local-identifier: random
+      - name: 'BrowserStack Local Tunnel Setup'
+        uses: browserstack/github-actions/setup-local@master
+        with:
+          local-testing: start
+          local-identifier: random
 
-        - name: 'Running test on BrowserStack'
-            run: mvn verify -Dheadless=true
+      - name: 'Running test on BrowserStack'
+        run: mvn verify -Dheadless=true
 
-        - name: Publish html report
-            if: always()
-            uses: actions/upload-artifact@v2
-
-        - name: 'BrowserStackLocal Stop'
-            uses: browserstack/github-actions/setup-local@master
-            with:
-              local-testing: stop
+      - name: 'BrowserStackLocal Stop'
+        uses: browserstack/github-actions/setup-local@master
+        with:
+          local-testing: stop
