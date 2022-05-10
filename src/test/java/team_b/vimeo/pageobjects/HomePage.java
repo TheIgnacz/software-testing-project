@@ -103,7 +103,7 @@ public class HomePage extends CommonPageObject {
     }
 
     public WebElement getInputFieldByName(final String name) {
-        waitForPageReadiness();
+        waitForElementToBeClickable(inputFieldsMap.get(name));
         return inputFieldsMap.get(name);
     }
 }
