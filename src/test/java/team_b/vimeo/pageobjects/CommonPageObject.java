@@ -18,6 +18,10 @@ public class CommonPageObject {
 
     public CommonPageObject(final WebDriverFactory factory) {
         PageFactory.initElements(factory.getWebDriver(), this);
+        setFactory(factory);
+    }
+
+    private void setFactory(WebDriverFactory factory){
         this.factory = factory;
     }
 
